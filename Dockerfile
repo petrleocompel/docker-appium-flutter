@@ -5,14 +5,12 @@ FROM appium/appium:latest
 
 ENV NODE_VERSION v18
 
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash \
-    && . $NVM_DIR/nvm.sh \
-    && nvm install $NODE_VERSION \
+SHELL ["/bin/bash", "--login", "-i", "-c"]
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+RUN source /root/.bashrc && nvm install $NODE_VERSION \
     && nvm alias default $NODE_VERSION \
     && nvm use default
-
-ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
-ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
+SHELL ["/bin/bash", "--login", "-c"]
 
 RUN npm install -g appium@next --unsafe-perm=true --allow-root
 
