@@ -6,7 +6,7 @@ FROM appium/appium:latest
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
 RUN export NVM_DIR="$HOME/.nvm"
-RUN [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
+RUN $HOME/nvm.sh 
 RUN nvm install v18
 
 RUN npm install -g appium@next --unsafe-perm=true --allow-root
