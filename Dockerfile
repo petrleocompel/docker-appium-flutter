@@ -7,10 +7,9 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | b
 
 RUN export NVM_DIR="$HOME/.nvm"
 RUN chmod +x $HOME/.nvm/nvm.sh 
-RUN $HOME/.nvm/nvm.sh
-RUN nvm install v18
+RUN $HOME/.nvm/nvm.sh && nvm install v18
 
-RUN npm install -g appium@next --unsafe-perm=true --allow-root
+RUN $HOME/.nvm/nvm.sh && nvm use v18 && npm install -g appium@next --unsafe-perm=true --allow-root
 
 RUN appium driver install --source=npm appium-flutter-driver
 
