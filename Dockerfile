@@ -5,5 +5,5 @@ RUN curl -sL https://deb.nodesource.com/setup_18.x | bash && \
 
 RUN npm install -g appium@next --unsafe-perm=true --allow-root
 
-RUN appium driver install flutter
+RUN appium driver install --source=npm appium-flutter-driver
 
